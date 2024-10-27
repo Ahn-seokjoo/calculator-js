@@ -31,7 +31,7 @@ function calculate(replacedExpression) {
     for (let i = 1; i < replacedExpression.length; i++) {
         var text = replacedExpression[i];
         var numberdValue = Number(text);
-        if (isNaN(text)) { // 사칙연산인 경우
+        if (isNaN(numberdValue)) { // 사칙연산인 경우
             if (text == '+') result = sum(result, Number(replacedExpression[++i]));
             if (text == '-') result = sub(result, Number(replacedExpression[++i]));
             if (text == '*') result = multiply(result, Number(replacedExpression[++i]));
@@ -44,7 +44,7 @@ function calculate(replacedExpression) {
 }
 
 function splitExpression(string) {
-    return string.match(/\d+|[+\-*/]/g);
+    return string.match(/(\d+|[+\-*/])/g);
 }
 
 function sum(x, y) {
